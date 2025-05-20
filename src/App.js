@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import MovieForm from "./MovieForm";
+import MovieList from "./MovieList";
+import React, {useState}   from "react";
+
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Min filmlista</h1>
+      <h3>Lägg till en film</h3>
+
+      <MovieForm movies={movies} setMovies={setMovies}></MovieForm>
+      <hr/>
+
+      <h3>Inlagda filmer</h3>
+      <MovieList  movies={movies} setMovies={setMovies}></MovieList>
     </div>
   );
 }
