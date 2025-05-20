@@ -8,7 +8,7 @@ export default function MovieForm({movies, setMovies}) {
 
     function addMovie(event) {
         event.preventDefault();
-            if (inputRef.current.value === "") {
+            if (inputRef.current.value.trim() === "") {
                 alert("Du måste fylla i en titel");
                 return;
             } 
@@ -18,7 +18,7 @@ export default function MovieForm({movies, setMovies}) {
                 return;
             }        
         
-        const newId = movies.length > 0 ? movies[movies.length - 1].id + 1 : 1;
+        const newId = Date.now();
 
         setMovies([...movies, {
             id: newId,
@@ -36,7 +36,7 @@ export default function MovieForm({movies, setMovies}) {
                 <label htmlFor="title">Titel</label>
                 <input type="text" class="form-control" id="title" placeholder="Titel här..." ref={inputRef}/>
 
-                <label for="grade">Betyg:</label>
+                <label htmlFor="grade">Betyg:</label>
                 <select class="form-control" id="grade" ref={gradeRef}>
                     <option value="0">Välj betyg här...</option>
                     <option>1</option>
